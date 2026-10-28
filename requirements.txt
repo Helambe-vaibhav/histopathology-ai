@@ -1,0 +1,17 @@
+torch>=2.0
+torchvision
+numpy
+scipy
+scikit-image
+scikit-learn
+opencv-python
+Pillow
+tifffile
+segmentation-models-pytorch
+torchstain
+matplotlib
+seaborn
+gradio
+pyyaml
+tqdm
+pandas

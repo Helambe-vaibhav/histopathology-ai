@@ -1,0 +1,21 @@
+Key,Name,Category,CNR,Fisher_Separation,Tenengrad_Sharpness,Otsu_IoU,Otsu_Dice,Nuclear_SNR_dB,Description
+Golden_Composite,Golden Pipeline (H-Deconv + Bilateral + CLAHE),Composite / Optimal,1.6416,2.6947,10500.3,0.7249,0.8405,5.11,Synergistic state-of-the-art: Eosin removal via H-Deconv + edge-preserving Bilateral denoising + CLAHE.
+Red_Channel,Red Channel Extraction,Color Removal,1.4307,2.0469,4472.5,0.7049,0.8269,15.32,"Transmitted by both dyes; nuclear contrast is poor, stroma dominates."
+Bilateral_Filter,"Bilateral Filter (d=9, σc=75, σs=75)",Filter,1.2607,1.5893,912.1,0.6942,0.8195,15.89,Edge-preserving smoothing; smooths intracellular variance while locking nuclear membrane edges sharp.
+Median_Filter,Median Filter (k=5),Filter,1.22,1.4884,1647.9,0.6845,0.8127,14.95,"Non-linear order statistic filter; removes dust, glass specks, and salt-and-pepper noise."
+Gaussian_Blur,"Gaussian Blur (k=5, σ=1.5)",Filter,1.2201,1.4886,1526.6,0.6812,0.8104,15.09,Low-pass smoothing filter; attenuates high-frequency camera sensor noise but blurs cell boundaries.
+LAB_Lightness,CIE LAB - L* (Perceptual Lightness),Color Removal,1.1948,1.4274,2829.3,0.6659,0.7994,14.47,Perceptually uniform lightness channel completely isolated from color opponent axes.
+Hematoxylin_Deconv,Hematoxylin Deconvolution (H-Stain Only),Color Removal,1.3762,1.8938,10009.9,0.6651,0.7989,10.23,Ruifrok-Johnston optical density unmixing; mathematically eliminates Eosin pink stain.
+Original_RGB,Original H&E (RGB Baseline),Baseline,1.1518,1.3265,2835.6,0.6589,0.7944,14.18,Raw microscope sensor acquisition with dual Hematoxylin & Eosin stains.
+Grayscale,Grayscale (Rec. 601 Luminance),Color Removal,1.1518,1.3265,2835.6,0.6589,0.7944,14.18,Standard luminance (0.299R + 0.587G + 0.114B); removes all hue and saturation.
+CLAHE,CLAHE (Local Adaptive Equalization),Filter,1.2068,1.4563,20226.9,0.6333,0.7755,5.17,Contrast-Limited Adaptive Histogram Equalization; boosts contrast of faint nuclei without blowing out stroma.
+Gabor_Energy,Gabor Filter Texture Bank,Filter,1.0234,1.0474,3980.7,0.6253,0.7694,18.41,Multiscale orientation bank; isolates stromal collagen fiber alignment and nuclear clustering textures.
+Unsharp_Mask,Unsharp Masking (Sharpening),Filter,0.9884,0.9768,7612.7,0.6085,0.7566,12.03,"High-boost filtering; enhances nuclear chromatin granules, nucleoli, and boundary transitions."
+Green_Channel,Green Channel Extraction,Color Removal,0.9549,0.9119,2882.2,0.6019,0.7515,11.91,Peak Hematoxylin absorption wavelength (~560nm); yields highest raw nuclear absorption.
+Red_Removed_Cyan,Red Removed (Cyan / GB Synthesis),Color Removal,0.8765,0.7682,2193.0,0.5694,0.7256,14.79,"Red channel zeroed out; eliminates eosin pink glare, isolating nucleic structures."
+Blue_Channel,Blue Channel Extraction,Color Removal,0.7445,0.5542,2103.4,0.5207,0.6848,16.73,Wavelength transmitted by hematoxylin; lower contrast for nuclei.
+LoG_Blob,Laplacian of Gaussian (Blob Detector),Filter,0.1492,0.0223,8630.8,0.3914,0.5626,-5.92,Second-derivative matched filter tuned to cell nuclei radius (σ=2.0); isolates circular cell bodies.
+Black_Hat,Morphological Black-Hat,Filter,0.6163,0.3798,1660.5,0.3847,0.5556,25.34,Closing minus image; specifically extracts small dark circular structures (nuclei) against lighter background.
+HSV_Saturation,HSV - Saturation Channel,Color Removal,0.2612,0.0682,2312.3,0.3822,0.5531,18.28,Quantifies dye concentration independent of illumination intensity.
+Eosin_Deconv,Eosin Deconvolution (E-Stain Only),Color Removal,0.1018,0.0104,8116.9,0.317,0.4814,8.67,Unmixes and isolates pure Eosin protein/stroma; mathematically eliminates Hematoxylin.
+Sobel_Magnitude,Sobel Gradient Magnitude,Filter,0.3127,0.0978,8351.5,0.247,0.3962,3.07,Calculates spatial gradient energy |Gx| + |Gy|; pinpoints nuclear membranes and tissue boundaries.

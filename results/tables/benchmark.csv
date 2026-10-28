@@ -1,0 +1,7 @@
+precision,batch_size,latency_ms,throughput_img_s,vram_mb,dice
+FP32,1,75.96,13.2,247.4,— (eval on test set)
+FP16,1,158.17,6.3,319.6,— (eval on test set)
+FP32,4,306.38,13.1,624.7,— (eval on test set)
+FP16,4,633.94,6.3,724.7,— (eval on test set)
+FP32,8,406.27,19.7,2280.2,— (eval on test set)
+FP16,8,1262.64,6.3,1267.2,— (eval on test set)

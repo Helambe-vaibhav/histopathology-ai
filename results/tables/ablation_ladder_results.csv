@@ -1,0 +1,6 @@
+stage,configuration,dice,dice_ci,iou,iou_ci,pq,sq,dq,count_error,area_error
+M5,M5: + ImageNet Pretrained Encoder (ResNet-34),0.0235,0.0068 - 0.0503,0.0122,0.0034 - 0.0265,0.007,0.4758,0.0113,95.59%,73.69%
+M4,M4: + Combined BCE & Dice Loss (Scratch U-Net + Combined + Aug),0.374,0.2182 - 0.4880,0.251,0.1279 - 0.3454,0.158,0.635,0.2437,36.98%,57.10%
+M3,M3: + Spatial & Color Augmentations (Scratch U-Net + BCE + Aug),0.3966,0.2350 - 0.5034,0.2654,0.1419 - 0.3510,0.1858,0.6426,0.2873,39.59%,49.93%
+M2,"M2: + Macenko Normalization (Scratch U-Net + BCE, No Aug)",0.0573,0.0283 - 0.0965,0.0304,0.0144 - 0.0524,0.0181,0.5946,0.0303,87.67%,68.69%
+M1,"M1: Baseline (Scratch U-Net + BCE, No Aug)",0.0913,0.0640 - 0.1252,0.0484,0.0333 - 0.0674,0.0271,0.5869,0.0451,82.87%,67.21%

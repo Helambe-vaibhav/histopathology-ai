@@ -1,0 +1,48 @@
+data:
+  root: "data/MoNuSeg"
+  tile_size: 256
+  stride: 128
+  train_ratio: 0.70
+  val_ratio: 0.15
+  test_ratio: 0.15
+  stain_norm: "macenko"
+
+training:
+  epochs: 100
+  batch_size: 4                     # 4 tiles/batch = ~2.1 GB VRAM (fits safely within 4GB GPU 90% limit)
+  gradient_accumulation_steps: 2    # Effective batch size = 4 * 2 = 8
+  lr: 1.0e-4
+  seed: 42
+  loss: "combined"   # bce | dice | combined
+  lambda_bce: 0.3
+
+model:
+  type: "unet"       # unet | pretrained_unet
+  encoder: "resnet34"
+  pretrained: true
+
+augmentation:
+  enabled: true
+  hflip: true
+  vflip: true
+  rotation: true
+  brightness: 0.2
+  contrast: 0.2
+
+watershed:
+  min_distance: 10   # minimum peak distance in distance transform
+
+inference:
+  threshold: 0.40    # Calibrated Pareto-optimal decision threshold (Dice=0.7387, PQ=0.4002)
+
+benchmark:
+  batch_sizes: [1, 4, 8]
+  warmup_iters: 5
+  benchmark_iters: 20
+
+hardware:
+  device: "cuda"
+  gpu_memory_fraction: 0.90   # Enforce strict 90% VRAM allocation ceiling to avoid OOM
+  max_ram_fraction: 0.90      # Enforce strict 90% system RAM ceiling
+  amp: false                  # False on GTX 1650 Ti (TU117 non-tensor-core GPU); True on RTX series
+  num_workers: 4              # Multi-worker DataLoader utilizing CPU cores
